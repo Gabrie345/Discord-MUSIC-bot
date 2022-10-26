@@ -6,7 +6,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const client = new Discord.Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent ],
 });
 const { token } = process.env;
 const prefix = "#";
@@ -18,17 +18,25 @@ client.on("ready", () => {
 });
 
 client.on("messageCreate", (msg) => {
-    if (!msg.guild) return;
-    if (!msg.content.startsWith(prefix)) return;
-    if (msg.content === prefix + "Hello") {
-        msg.reply({
-        content: "Is Okay!!",
-    });
-  }
-  if (msg.content === prefix + "O kid é gay ?") {
+  if (!msg.guild) return;
+  if (!msg.content.startsWith(prefix)) return; 
+  if (msg.content === prefix + "O Gabriel é lindo?") {
     msg.reply({
       content: "SIM!!!!!!",
     });
   }
-  
-});
+  if(msg.content === prefix + 'join'){
+    console.log(msg.member.voice.channel);
+    client.join()
+    msg.member.voice.channel.join();
+    
+    
+    
+    /*if(msg.member.voice.channel){
+      console.log('dentro do if');
+      console.log(msg.member.voice.channel.joinable);
+      console.log('o pai ta ON !!!');
+    }*/
+  }
+
+})
