@@ -2,6 +2,7 @@
 const Discord = require("discord.js");
 const { GatewayIntentBits } = require("discord.js");
 const dotenv = require("dotenv");
+const { joinVoiceChannel } = require('@discordjs/voice');
 
 dotenv.config();
 
@@ -50,9 +51,19 @@ client.on("ready", () => {
   console.log("Bot is ready!!!");
 });
 
-client.on("messageCreate", (msg) => {
+client.on("messageCreate", async(msg) => {
+  //fitro chat box
   if (!msg.guild) return;
-  if (!msg.content.startsWith(prefix)) return; 
+  if (!msg.content.startsWith(prefix)) return;
+  
+
+  if(msg.content == prefix + "Join"){
+    joinVoiceChannel({
+      channelId: msg.member.voice.channel.id,
+      guildId: msg.guild.id,
+      adapterCreator: msg.guild.voiceAdapterCreator
+  })
+  }
   if (msg.content == prefix + "Pedro Gois") {
     result = getRandomArbitrary(0, 27)
     msg.reply({ 
