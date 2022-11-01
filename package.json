@@ -10,10 +10,12 @@
   "author": "gabrie345",
   "license": "ISC",
   "dependencies": {
+    "@discordjs/opus": "github:discordjs/opus",
     "@discordjs/voice": "^0.13.0",
     "discord-api-types": "^0.37.14",
     "discord.js": "^14.6.0",
     "dotenv": "^16.0.3",
+    "ffmpeg-static": "^5.1.0",
     "ytdl-core": "^4.11.2"
   }
 }
